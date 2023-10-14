@@ -13,22 +13,20 @@ import androidx.fragment.app.Fragment;
 import com.example.imagepro.R;
 
 
-public class StoreFragment extends Fragment {
-
+public class HowtoUseFragment extends Fragment {
     private TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_store,container,false);
+        return inflater.inflate(R.layout.fragment_howtouse,container,false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textView = view.findViewById(R.id.text_order);
+        textView = view.findViewById(R.id.text_view);
 
-        textView.setText("Store fragment");
+        textView.setText("How to use fragment");
 
     }
-
 }

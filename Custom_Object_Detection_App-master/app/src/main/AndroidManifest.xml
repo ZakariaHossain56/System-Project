@@ -25,6 +25,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImagePro">
         <activity
+            android:name=".SettingsFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ContactUsFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.TermsandConditionsFragment"
+            android:exported="false" />
+        <activity
+            android:name=".PrivacyPolicyFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AboutUsFragment"
+            android:exported="false" />
+        <activity
+            android:name=".ui.AboutUsFragement"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity

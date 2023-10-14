@@ -19,20 +19,50 @@
 
     <fragment
         android:id="@+id/nav_how_to_use"
-        android:name="com.example.imagepro.ui.WishListFragment"
+        android:name="com.example.imagepro.ui.HowtoUseFragment"
         android:label="How to Use"
-        tools:layout="@layout/fragment_wishlist" />
+        tools:layout="@layout/fragment_howtouse" />
 
     <fragment
         android:id="@+id/nav_about_sign_language"
-        android:name="com.example.imagepro.ui.CartFragment"
+        android:name="com.example.imagepro.ui.AboutSignLanguageFragment"
         android:label="About Sign Language"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_about_sign_language" />
 
     <fragment
         android:id="@+id/nav_history"
-        android:name="com.example.imagepro.ui.StoreFragment"
+        android:name="com.example.imagepro.ui.HistoryFragment"
         android:label="History"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_history" />
+
+    <fragment
+        android:id="@+id/nav_aboutus"
+        android:name="com.example.imagepro.ui.AboutUsFragment"
+        android:label="About us"
+        tools:layout="@layout/activity_about_us_fragment" />
+
+    <fragment
+        android:id="@+id/nav_privacy"
+        android:name="com.example.imagepro.ui.PrivacyPolicyFragment"
+        android:label="Privacy Policy"
+        tools:layout="@layout/activity_privacy_policy_fragment" />
+
+    <fragment
+        android:id="@+id/nav_terms"
+        android:name="com.example.imagepro.ui.TermsandConditionsFragment"
+        android:label="Terms and Conditions"
+        tools:layout="@layout/activity_termsand_conditions_fragment" />
+
+    <fragment
+        android:id="@+id/nav_contactus"
+        android:name="com.example.imagepro.ui.ContactUsFragment"
+        android:label="Contact us"
+        tools:layout="@layout/activity_contact_us_fragment" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.example.imagepro.ui.SettingsFragment"
+        android:label="Contact us"
+        tools:layout="@layout/activity_settings_fragment" />
 
 </navigation>

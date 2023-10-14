@@ -51,7 +51,10 @@ public class MainActivity extends AppCompatActivity {
         navView = findViewById(R.id.nav_view);
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,R.id.nav_profile, R.id.nav_how_to_use, R.id.nav_about_sign_language,R.id.nav_history,R.id.contactus,R.id.privacypolicy,R.id.aboutus,R.id.signout)
+                R.id.nav_home,R.id.nav_profile, R.id.nav_how_to_use, R.id.nav_about_sign_language,
+                R.id.nav_history,R.id.nav_aboutus,R.id.nav_terms,R.id.nav_contactus,R.id.nav_privacy,
+                R.id.nav_settings,
+                R.id.signout)
                 .setOpenableLayout(drawerLayout)
                 .build();
 
@@ -65,25 +68,17 @@ public class MainActivity extends AppCompatActivity {
 
                 if(navController == null) return false;
 
-                if(item.getItemId() == R.id.contactus){
-                    contactUs();
-                    return false;
-                }
-                else if(item.getItemId() == R.id.privacypolicy){
-                    showPolicy();
-                    return false;
-                }
-                else if(item.getItemId() == R.id.aboutus){
-                    showAboutUs();
-                    return false;
-                }
+
                 else if(item.getItemId() == R.id.signout){
                     signOutUser();
                     return false;
                 }
 
                 int id = item.getItemId();
-                if(id == R.id.nav_home || id == R.id.nav_profile || id == R.id.nav_how_to_use  || id == R.id.nav_about_sign_language || id == R.id.nav_history  ){
+                if(id == R.id.nav_home || id == R.id.nav_profile || id == R.id.nav_how_to_use  ||
+                        id == R.id.nav_about_sign_language || id == R.id.nav_history  ||
+                        id == R.id.nav_aboutus || id == R.id.nav_privacy || id == R.id.nav_terms
+                        || id == R.id.nav_contactus || id == R.id.nav_settings){
                     navController.navigate(id);
                     navView.setCheckedItem(id);
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -94,20 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void contactUs(){
-        //rest of the code for contact us
-        showToast("Contact us");
-    }
 
-    private void showAboutUs(){
-        //rest of the code for about us
-        showToast("About us");
-    }
 
-    private void showPolicy(){
-        //rest of the code for policy
-        showToast("Policy clicked");
-    }
+
+
+
 
     private void signOutUser(){
         //rest of the code for sign out

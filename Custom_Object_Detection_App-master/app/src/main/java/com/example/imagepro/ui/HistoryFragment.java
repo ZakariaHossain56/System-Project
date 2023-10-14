@@ -13,21 +13,22 @@ import androidx.fragment.app.Fragment;
 import com.example.imagepro.R;
 
 
-public class CartFragment extends Fragment {
+public class HistoryFragment extends Fragment {
 
     private TextView textView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_cart,container,false);
+        return inflater.inflate(R.layout.fragment_history,container,false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textView = view.findViewById(R.id.text_cart);
+        textView = view.findViewById(R.id.text_order);
 
-        textView.setText("Cart fragment");
+        textView.setText("History fragment");
 
     }
+
 }
