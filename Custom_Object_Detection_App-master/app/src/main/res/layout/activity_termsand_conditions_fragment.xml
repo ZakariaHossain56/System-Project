@@ -17,7 +17,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
-        android:textSize="24dp"
+        android:textSize="28dp"
         android:textColor="@color/white"/>
 
     <TextView
