@@ -1,24 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AboutSignLanguageFragment">
+    android:background="@drawable/splash_background"
+    android:orientation="vertical"
+    >
+
+
 
     <TextView
-        android:text="Terms and Conditions"
-        android:id="@+id/text_terms"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Terms of services"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:textStyle="bold"
+        android:textSize="24dp"
+        android:textColor="@color/white"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="last update January 2023"
+        android:layout_marginLeft="20dp"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:fontFamily="serif"/>
+
+
+
+
+    
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:paddingTop="40dp"
+                android:paddingBottom="10dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:text="@string/terms_conditions"
+                android:fontFamily="serif"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+    
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="20dp"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp"
+       android:orientation="horizontal">
+        
+        <Button
+            android:id="@+id/bt_accept"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+        
+
+        
+        <Button
+            android:id="@+id/bt_decline"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Decline"
+            android:layout_marginLeft="30dp"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/white"/>
+   </LinearLayout>
+
+    
+</LinearLayout>
