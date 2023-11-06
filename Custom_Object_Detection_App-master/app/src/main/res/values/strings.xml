@@ -33,7 +33,7 @@
 
                     \nLink to the privacy policy of third-party service providers used
                     by the app
-                   <ul><li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener noreferrer">Google Play Services</a></li></ul>
+                   <ul><li><a href="https://www.google.com/policies/privacy/" rel="noopener noreferrer" target="_blank">Google Play Services</a></li></ul>
        \n \n<b>Log Data</b>
         \n
                   I want to inform you that whenever you
@@ -146,7 +146,7 @@
                   \n
                     Link to Terms and Conditions of third-party service
                     providers used by the app
-                  <ul><li><a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Google Play Services</a></li></ul>
+                  <ul><li><a href="https://policies.google.com/terms" rel="noopener noreferrer" target="_blank">Google Play Services</a></li></ul>
                   \nYou should be aware that there are certain things that
                   Zakaria Hossain will not take responsibility for. Certain
                   functions of the app will require the app to have an active

@@ -25,6 +25,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImagePro">
         <activity
+            android:name=".playVideoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".textToSign"
+            android:exported="false" />
+        <activity
             android:name=".SettingsFragment"
             android:exported="false" />
         <activity
