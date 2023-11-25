@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.PaymentFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imgView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@color/black"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.294">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="79dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/bkash"
+            tools:layout_editor_absoluteX="135dp"
+            tools:layout_editor_absoluteY="167dp">
+
+        </ImageView>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bKash Payment Gateway"
+        android:textColor="#E91E63"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/paymentText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgView2" />
+
+    <EditText
+        android:id="@+id/paymentText"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:background="@drawable/edittextbg"
+        android:hint="Enter amount"
+        android:inputType="numberDecimal"
+        android:paddingLeft="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.528" />
+
+    <Button
+        android:id="@+id/paymentBtn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#E91E63"
+        android:paddingLeft="20dp"
+        android:text="Pay Now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/paymentText"
+        app:layout_constraintVertical_bias="0.101" />
+
+    <Button
+        android:id="@+id/tst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/imgView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

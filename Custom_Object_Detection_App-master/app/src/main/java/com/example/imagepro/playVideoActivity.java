@@ -63,15 +63,23 @@ public class playVideoActivity extends AppCompatActivity {
     {
         if(id==tokens1.length){finish();return;}
         String token  = tokens1[id];
+
+        SharedPreferences tokenUsed = getSharedPreferences("tokenUsed", MODE_PRIVATE);
+        SharedPreferences.Editor editor = tokenUsed.edit();
+        int currentCount = tokenUsed.getInt(token, 0);
+
+
             // Toast.makeText(textToSign.this, token, Toast.LENGTH_SHORT).show();
             String path = videoRef.getString(tokens1[id]+".mp4",null);
             if(path == null) {
-                Toast.makeText(this, "baal", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
                 id = id+1;
                 show();
                 //continue;
             }
             else {
+                editor.putInt(token,currentCount+1);
+                editor.apply();
               //  Toast.makeText(this, tokens1[id]+"ddbaal  " + path, Toast.LENGTH_SHORT).show();
 
                 //StyledPlayerView playerView = findViewById(R.id.playerView);
