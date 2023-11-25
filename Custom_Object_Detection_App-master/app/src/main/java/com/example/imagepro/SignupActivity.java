@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
@@ -72,18 +73,20 @@ public class SignupActivity extends AppCompatActivity {
                                     pg.setVisibility(View.GONE);
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                     if(user != null)
                                     {
-                                        String uid = user.toString();
+                                        String uid = user.getUid().toString();
                                         userInfo userinfo = new userInfo(name ,mail);
-                                        FirebaseDatabase.getInstance().getReference("userinfo").child(uid).setValue(userinfo );
+                                        DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("userinfo");
+                                        dbref.child(uid).setValue(userinfo );
                                         Intent i = new Intent(SignupActivity.this , MainActivity.class);
                                         startActivity(i);
-                                    }
+                                        finish();                                    }
                                     //updateUI(user);
                                 } else {
                                     // If sign in fails, display a message to the user.
+                                    //
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
 
                                 }
