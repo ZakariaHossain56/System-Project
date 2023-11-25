@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1080465690835",
+    "firebase_url": "https://imagepro-7aeab-default-rtdb.firebaseio.com",
+    "project_id": "imagepro-7aeab",
+    "storage_bucket": "imagepro-7aeab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080465690835:android:082222a01ce638f8d4c426",
+        "android_client_info": {
+          "package_name": "com.example.imagepro"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3MXZrmYVK1JYJ4OZR2YxBXiaEyWKqrmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

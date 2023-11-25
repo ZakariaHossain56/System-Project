@@ -19,13 +19,14 @@ import com.example.imagepro.CameraActivity;
 import com.example.imagepro.GoogleAssistant;
 import com.example.imagepro.MainActivity;
 import com.example.imagepro.R;
+import com.example.imagepro.textToSign;
 
 import org.opencv.android.OpenCVLoader;
 
 
 public class HomeFragment extends Fragment {
     private TextView textView;
-    private Button camera_button;
+    private Button camera_button,textToSignButton;
 
     LinearLayout googleass;
 
@@ -57,6 +58,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), CameraActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            }
+        });
+        textToSignButton=view.findViewById(R.id.text_to_sign_button);
+        textToSignButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), textToSign.class));
             }
         });
 
