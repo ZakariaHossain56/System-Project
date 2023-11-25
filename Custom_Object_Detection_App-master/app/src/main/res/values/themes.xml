@@ -23,4 +23,23 @@
 
 
     <style name="Theme.GadgetStore.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="night_mode_switch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/night_mode</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="notifications_switch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/notifications</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="private_account_switch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/private_account</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
 </resources>

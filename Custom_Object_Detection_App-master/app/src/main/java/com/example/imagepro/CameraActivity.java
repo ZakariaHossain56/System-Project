@@ -12,13 +12,16 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import java.io.IOException;
@@ -64,6 +67,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         Log.i(TAG,"Instantiated new "+this.getClass());
     }
 
+    private TextView tvSign;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,15 +84,17 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
 
         setContentView(R.layout.activity_camera);
 
+        tvSign = findViewById(R.id.tvSign);
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
+        mOpenCvCameraView.setCameraIndex(CameraBridgeViewBase.CAMERA_ID_FRONT);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
         try{
-            // Copy and paste model.tflite and label in assets folder
-            // Now replace model name, label name and input size
-            // input size is 300 for this model
-            // We trained model on input size =320
-            objectDetectorClass=new objectDetectorClass(getAssets(),"hand_model.tflite","custom_label.txt",300);
+
+            objectDetectorClass=new objectDetectorClass(tvSign,
+                    getAssets(),"hand_model.tflite","custom_label.txt",300,
+                    "ASL(own).tflite",96
+            );
             Log.d("MainActivity","Model is successfully loaded");
         }
         catch (IOException e){
@@ -130,6 +137,11 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     public void onCameraViewStarted(int width ,int height){
         mRgba=new Mat(height,width, CvType.CV_8UC4);
         mGray =new Mat(height,width,CvType.CV_8UC1);
+
+
+
+
+
     }
     public void onCameraViewStopped(){
         mRgba.release();
@@ -139,9 +151,18 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         mGray=inputFrame.gray();
         // Before watching this video please watch previous video of loading tensorflow lite model
 
+
+        // Rotate the image by 180 degrees
+        Core.flip(mRgba, mRgba, 1);
+        Core.flip(mGray, mGray, 1);
+
         // now call that function
         Mat out=new Mat();
         out=objectDetectorClass.recognizeImage(mRgba);
+
+//        Imgproc.cvtColor(mRgba, mGray, Imgproc.COLOR_RGBA2GRAY);
+//        Imgcodecs.imwrite("output.jpg", mGray); // Save the image to a file
+//        System.out.println(System.getProperty("user.dir"));
 
         return out;
     }

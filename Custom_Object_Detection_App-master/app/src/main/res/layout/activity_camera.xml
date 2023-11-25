@@ -4,6 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/tvSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/sign"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:paddingTop="8dp"
+        android:layout_marginTop="10dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="8dp"
+        android:background="#ffffff"/>
+
     <org.opencv.android.JavaCameraView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
