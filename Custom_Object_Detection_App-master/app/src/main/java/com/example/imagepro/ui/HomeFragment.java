@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.imagepro.CameraActivity;
+import com.example.imagepro.GoogleAssistant;
 import com.example.imagepro.MainActivity;
 import com.example.imagepro.R;
 import com.example.imagepro.textToSign;
@@ -25,6 +27,8 @@ import org.opencv.android.OpenCVLoader;
 public class HomeFragment extends Fragment {
     private TextView textView;
     private Button camera_button,textToSignButton;
+
+    LinearLayout googleass;
 
     static {
         if(OpenCVLoader.initDebug()){
@@ -48,6 +52,8 @@ public class HomeFragment extends Fragment {
 
 
         camera_button=view.findViewById(R.id.camera_button);
+
+        googleass = view.findViewById(R.id.googleass);
         camera_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +65,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), textToSign.class));
+            }
+        });
+
+        googleass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), GoogleAssistant.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 
