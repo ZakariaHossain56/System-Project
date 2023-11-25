@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
-            }git 
+            }
         });
         goToSignup.setOnClickListener(new View.OnClickListener() {
             @Override
