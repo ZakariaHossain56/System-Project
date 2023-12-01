@@ -24,9 +24,6 @@ public class HowtoUseFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        textView = view.findViewById(R.id.text_view);
-
-        textView.setText("How to use fragment");
 
     }
 }

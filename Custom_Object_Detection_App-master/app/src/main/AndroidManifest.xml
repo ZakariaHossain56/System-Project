@@ -36,6 +36,9 @@
         android:theme="@style/Theme.ImagePro"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
             android:name=".EditProfile"
             android:exported="false" />
         <activity
@@ -63,7 +66,7 @@
             android:name=".ui.ContactUsFragment"
             android:exported="false" />
         <activity
-            android:name=".ui.TermsandConditionsFragment"
+            android:name=".TermsandConditionsFragment"
             android:exported="false" />
         <activity
             android:name=".PrivacyPolicyFragment"

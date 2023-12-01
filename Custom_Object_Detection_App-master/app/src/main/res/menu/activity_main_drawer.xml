@@ -19,30 +19,15 @@
             android:icon="@drawable/baseline_task_alt_24"
             android:title="How to Use" />
 
-        <item
-            android:id="@+id/nav_about_sign_language"
-            android:icon="@drawable/baseline_assignment_24"
-            android:title="About Sign Language" />
+<!--        <item-->
+<!--            android:id="@+id/nav_about_sign_language"-->
+<!--            android:icon="@drawable/baseline_assignment_24"-->
+<!--            android:title="About Sign Language" />-->
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/baseline_history_24"
             android:title="History" />
-        <item
-            android:id="@+id/nav_aboutus"
-            android:icon="@drawable/baseline_info_24"
-            android:title="About us" />
-        <item
-            android:id="@+id/nav_privacy"
-            android:icon="@drawable/ic_baseline_privacy_tip_24"
-            android:title="Privacy Policy" />
-        <item
-            android:id="@+id/nav_terms"
-            android:icon="@drawable/baseline_rule_24"
-            android:title="Terms and Conditions" />
-        <item
-            android:id="@+id/nav_contactus"
-            android:icon="@drawable/ic_baseline_phone_24"
-            android:title="Contact us" />
+
         <item
             android:id="@+id/nav_emergency"
             android:icon="@android:drawable/ic_menu_send"
@@ -50,14 +35,34 @@
             android:visible="true"
             android:iconTint="#F61919"
             />
-        <item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_baseline_settings_24"
-            android:title="Settings" />
+
         <item
             android:id="@+id/nav_premium"
             android:icon="@drawable/ic_baseline_store_mall_directory_24"
             android:title="Go Premium" />
+
+<!--        <item-->
+<!--            android:id="@+id/nav_aboutus"-->
+<!--            android:icon="@drawable/baseline_info_24"-->
+<!--            android:title="About us" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_privacy"-->
+<!--            android:icon="@drawable/ic_baseline_privacy_tip_24"-->
+<!--            android:title="Privacy Policy" />-->
+<!--        <item-->
+<!--            android:id="@+id/nav_terms"-->
+<!--            android:icon="@drawable/baseline_rule_24"-->
+<!--            android:title="Terms and Conditions" />-->
+        <item
+            android:id="@+id/nav_contactus"
+            android:icon="@drawable/ic_baseline_phone_24"
+            android:title="Contact us" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_baseline_settings_24"
+            android:title="Settings" />
+
         <item
             android:id="@+id/nav_update"
             android:icon="?android:attr/alertDialogIcon"

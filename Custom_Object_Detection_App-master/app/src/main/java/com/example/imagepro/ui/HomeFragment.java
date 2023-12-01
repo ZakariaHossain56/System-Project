@@ -19,13 +19,20 @@ import com.example.imagepro.CameraActivity;
 import com.example.imagepro.GoogleAssistant;
 import com.example.imagepro.MainActivity;
 import com.example.imagepro.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 //import com.example.imagepro.textToSign;
 
 import org.opencv.android.OpenCVLoader;
 
 
 public class HomeFragment extends Fragment {
-    private TextView textView;
+    private TextView tvwelcome;
     private Button camera_button,textToSignButton;
 
     LinearLayout googleass;
@@ -49,6 +56,34 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        tvwelcome = view.findViewById(R.id.tvwelcome);
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String userId = currentUser.getUid();
+        DatabaseReference userInfoRef = FirebaseDatabase.getInstance().getReference("userinfo");
+        DatabaseReference userRef = userInfoRef.child(userId);
+
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // The user data exists
+                    String name = dataSnapshot.child("name").getValue(String.class);
+                    tvwelcome.setText("Hello, "+name);
+                } else {
+                    System.out.println("User not found.");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("Error: " + error.getMessage());
+            }
+        });
 
 
         camera_button=view.findViewById(R.id.camera_button);

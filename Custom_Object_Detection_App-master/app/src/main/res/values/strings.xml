@@ -2,6 +2,23 @@
     <string name="app_name">MAS</string>\
     <string name="test_bn">বানলগা </string>
     <string name="sign">Sign</string>
+    <string name="how_sign">The home fragement appears when you are logged in.
+    If not, click home from the navigation bar. Click Real-Time Sign Language Recognition.
+        A camera view will be appeared. Show appropriate sign for the specific character
+        and make sentence with them.
+    </string>
+
+    <string name="how_profile">Click My Profile from the navigation bar. Your personal
+        information will appear here. Click Edit Information, edit your profile and click
+        save to update your personal info.
+    </string>
+
+    <string name="how_settings">Click Settings from the navigation bar. Settings like
+        Dark Mode, Notifications, Change Password etc. will appear here. Change settings
+        according to your preference.
+
+    </string>
+
     <string name="privacy_policy">
     <b>Privacy Policy</b>
         \n

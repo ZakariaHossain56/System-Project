@@ -10,16 +10,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
             android:layout_centerInParent="true"
+            android:text="Settings"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="18sp"/>
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -40,6 +41,7 @@
                 android:src="@drawable/male_user_96"/>
             
             <TextView
+                android:id="@+id/tvsettingsuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -50,6 +52,7 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/tvsettingsphone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+880 1783067522"
@@ -57,19 +60,6 @@
                 android:textSize="12sp"
                 android:layout_gravity="center"/>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginTop="20dp"
-                android:paddingStart="30dp"
-                android:paddingEnd="30dp"
-                android:layout_gravity="center"
-                android:background="@drawable/round_corner_secondary"
-                android:text="Edit Profile"
-                android:textColor="@color/primary"
-                android:textAllCaps="false"
-                />
-            
             <LinearLayout
                 android:background="@drawable/round_back_white"
                 android:layout_width="match_parent"
@@ -99,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_centerVertical="true"
-                        android:text="Night Mode"
+                        android:text="Dark Mode"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:layout_toEndOf="@id/night_mode_icon"/>
@@ -151,42 +141,6 @@
 
                 </RelativeLayout>
 
-                <!--Private Account-->
-                <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/private_account_icon"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="12dp"
-                        android:src="@drawable/privacy_tip_24"
-                        android:background="@drawable/round_back_private_account"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_centerVertical="true"
-                        android:text="Private Account"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold"
-                        android:layout_toEndOf="@id/private_account_icon"/>
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:switchMinWidth="50dp"
-                        android:theme="@style/private_account_switch"/>
-
-
-                </RelativeLayout>
-
 
             </LinearLayout>
 
@@ -202,6 +156,7 @@
 
                 <!--Security-->
                 <RelativeLayout
+                    android:id="@+id/tvterms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -210,7 +165,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/security_24"
+                        android:src="@drawable/baseline_rule_24"
                         android:background="@drawable/round_back_security"
                         />
 
@@ -219,7 +174,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_centerVertical="true"
-                        android:text="Security &amp; Privacy"
+                        android:text="Terms &amp; Conditions"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:layout_toEndOf="@id/security_icon"/>
@@ -237,6 +192,7 @@
 
                 <!--Textsize   -->
                 <RelativeLayout
+                    android:id="@+id/tvprivacy"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -246,7 +202,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/text_fields_24"
+                        android:src="@drawable/security_24"
                         android:background="@drawable/round_back_night_mode"
                         />
 
@@ -255,7 +211,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_centerVertical="true"
-                        android:text="Preferences"
+                        android:text="Privacy Policy"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:layout_toEndOf="@id/textsize_icon"/>
@@ -274,6 +230,7 @@
 
                 <!--Language-->
                 <RelativeLayout
+                    android:id="@+id/tvchangepass"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -283,7 +240,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/language_24"
+                        android:src="@drawable/baseline_password_24"
                         android:background="@drawable/round_back_notifications"
                         />
 
@@ -292,7 +249,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
                         android:layout_centerVertical="true"
-                        android:text="Languages"
+                        android:text="Change Password"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold"
                         android:layout_toEndOf="@id/language_icon"/>

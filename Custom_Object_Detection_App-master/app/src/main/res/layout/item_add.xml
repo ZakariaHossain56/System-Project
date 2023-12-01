@@ -34,7 +34,7 @@
                     android:layout_height="35dp"/>
                 <TextView
                     android:text="Address"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_margin="5dp"
                     android:textStyle="bold|normal"
                     android:textColor="@color/white"
@@ -82,7 +82,7 @@
                 <TextView
                     android:id="@+id/tvaddress"
                     android:text="Bhagyanager Colony, \nMadhapur Hyderabad,\nTelangana \n500084"
-                    android:textSize="13sp"
+                    android:textSize="18sp"
                     android:textColor="@color/white"
                     android:textStyle="normal"
                     android:textAlignment="textStart"

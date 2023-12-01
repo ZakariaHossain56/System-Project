@@ -82,10 +82,19 @@ public class ProfileFragment extends Fragment {
                     address = dataSnapshot.child("address").getValue(String.class);
                     phone = dataSnapshot.child("phone").getValue(String.class);
 
+                    String[] addressArray = address.split(", ");
+
+                    // Concatenate substrings with line breaks
+                    StringBuilder result = new StringBuilder();
+                    for (String address : addressArray) {
+                        result.append(address).append("\n");
+                    }
+
+
 
                     tvuser.setText(name);
                     tvmail.setText(email);
-                    tvaddress.setText(address);
+                    tvaddress.setText(result.toString());
                     tvphone.setText(phone);
 
 //                    System.out.println("Name: " + name);

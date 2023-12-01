@@ -27,11 +27,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
 
+    private TextView tvusername;
 
     private DrawerLayout drawerLayout;
     private NavigationView navView;
@@ -86,6 +90,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        tvusername = findViewById(R.id.tvusername);
+
+
+
 
         View view = findViewById(R.id.app_bar_main);
 
@@ -137,6 +146,34 @@ public class MainActivity extends AppCompatActivity {
             editor1.putBoolean(FIRST_TIME_KEY, false);
             editor1.apply();
         }
+
+//
+//        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        String userId = currentUser.getUid();
+//        DatabaseReference userInfoRef = FirebaseDatabase.getInstance().getReference("userinfo");
+//        DatabaseReference userRef = userInfoRef.child(userId);
+//
+//
+//        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    // The user data exists
+//                    String name = dataSnapshot.child("name").getValue(String.class);
+//                    tvusername.setText(name);
+//                } else {
+//                    System.out.println("User not found.");
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                System.out.println("Error: " + error.getMessage());
+//            }
+//        });
+
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -297,7 +334,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void signOutUser(){
         //rest of the code for sign out
-        showToast("sign out clicked");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.signOut();
+        finish();
     }
 
     private boolean downloadUpdates(boolean isDownload){
