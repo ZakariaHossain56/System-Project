@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
+
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/primary">
 
     <TextView
         android:id="@+id/tvSign"
@@ -22,7 +27,63 @@
 
     <org.opencv.android.JavaCameraView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="580dp"
         android:id="@+id/frame_Surface"/>
 
+
+    <android.widget.Button
+        android:id="@+id/backspace"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginEnd="50dp"
+        android:text="Backspace"
+        android:background="#00294f"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:padding="10dp"/>
+
+    <android.widget.Button
+        android:id="@+id/add"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="600dp"
+        android:text="Add"
+        android:background="#00294f"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:padding="10dp"/>
+
+    <android.widget.Button
+        android:id="@+id/space"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="600dp"
+        android:text="Space"
+        android:background="#00294f"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tvsentence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:layout_marginLeft="24dp"
+        android:text="Sentence"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:paddingTop="8dp"
+        android:layout_marginTop="660dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="8dp"
+        android:background="#ffffff"/>
+
+
 </FrameLayout>
+

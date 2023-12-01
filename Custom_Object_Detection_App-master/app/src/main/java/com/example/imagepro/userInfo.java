@@ -1,13 +1,33 @@
 package com.example.imagepro;
 
 public class userInfo {
-    String name , mail ;
+    String name , mail, address, phone;
 
-    userInfo(String name , String mail)
-    {
+    public userInfo(String name, String mail, String address, String phone) {
         this.name = name;
         this.mail = mail;
+        this.address = address;
+        this.phone = phone;
     }
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
     public String getName() {
         return name;
     }

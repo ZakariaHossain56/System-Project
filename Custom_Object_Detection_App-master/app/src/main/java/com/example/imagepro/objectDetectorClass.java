@@ -5,6 +5,8 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.opencv.android.Utils;
@@ -16,6 +18,7 @@ import org.opencv.core.Scalar;
 import org.opencv.imgproc.Imgproc;
 import org.tensorflow.lite.Interpreter;
 import org.tensorflow.lite.gpu.GpuDelegate;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -51,14 +54,25 @@ public class objectDetectorClass {
     private  int width=0;
 
     private int classificationInputSize = 0;
-    private TextView tvSign;
+    private TextView tvSign, tvsentence;
+    private Button backspace, add, space;
 
     private String val;
 
+    private String word = "";
+
+    private String sentence = "";
+
     private android.os.Handler myHandler = new android.os.Handler();
 
-    objectDetectorClass(TextView tvSign, AssetManager assetManager, String modelPath, String labelPath, int inputSize, String classificationModel, int classificationInputSize) throws IOException{
+    objectDetectorClass(TextView tvSign, Button backspace, Button add, Button space, TextView tvsentence,
+                        AssetManager assetManager, String modelPath, String labelPath, int inputSize, String classificationModel, int classificationInputSize) throws IOException{
         this.tvSign = tvSign;
+        this.backspace = backspace;
+        this.add = add;
+        this.space = space;
+        this.tvsentence = tvsentence;
+
         INPUT_SIZE=inputSize;
         this.classificationInputSize = classificationInputSize;
         // use to define gpu or cpu // no. of threads
@@ -265,7 +279,35 @@ public class objectDetectorClass {
             /* use put-text to add class name in image */
             Imgproc.putText(rotated_mat_image,outputClassValue[0][0] + "-"+ signVal,new Point(mainx1+10,mainy1+40),2,1.5,new Scalar(255,255,255,255),2);
 
+            backspace.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!word.isEmpty() || !sentence.isEmpty()) {
+                        // Remove the last character
+                        word = word.substring(0, word.length() - 1);
+                        sentence = sentence.substring(0, sentence.length() - 1);
+                        tvsentence.setText(sentence);
+                    }
+                }
+            });
 
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    word += signVal;
+                    sentence += signVal;
+                    tvsentence.setText(sentence);
+                }
+            });
+
+            space.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    word = "";
+                    sentence += " ";
+                    tvsentence.setText(sentence);
+                }
+            });
 
             // draw rectangle in Original frame //  starting point    // ending point of box  // color of box       thickness
             Imgproc.rectangle(rotated_mat_image,new Point(mainx1,mainy1),new Point(mainx2,mainy2),new Scalar(0, 255, 0, 255),2);
@@ -273,6 +315,11 @@ public class objectDetectorClass {
             // string of class name of object  // starting point                         // color of text           // size of text
 
             //Imgproc.putText(rotated_mat_image,labelList.get((int) class_value),new Point(left,top),3,1,new Scalar(255, 0, 0, 255),2);
+
+
+
+
+
         }
 
         // select device and run
@@ -291,43 +338,68 @@ public class objectDetectorClass {
         System.out.println("signValue "+signValue);
         //Log.d("CameraActivity","Signvalue");
 
-        if (signValue <= 2.5 ) val = "অ";
-        else if (signValue <= 2.7) val = "আ";
-        else if (signValue <= 5.5) val = "ই";
-        else if (signValue <= 6.5) val = "উ";
-        else if (signValue <= 7.5) val = "এ";
-        else if (signValue <= 8.5) val = "ও";
-        else if (signValue <= 9.5) val = "ক";
-        else if (signValue <= 10.5) val = "খ";
-        else if (signValue <= 11.5) val = "গ";
-        else if (signValue <= 12.5) val = "ঘ";
-        else if (signValue <= 13.5) val = "চ";
-        else if (signValue <= 14.5) val = "ছ";
-        else if (signValue <= 15.5) val = "জ";
-        else if (signValue <= 16.5) val = "ঝ";
-        else if (signValue <= 17.5) val = "ট";
-        else if (signValue <= 18.5) val = "ঠ";
-        else if (signValue <= 19.5) val = "ড";
-        else if (signValue <= 20.5) val = "ঢ";
-        else if (signValue <= 21.5) val = "ত";
-        else if (signValue <= 22.5) val = "থ";
-        else if (signValue <= 23.5) val = "দ";
-        else if (signValue <= 24.5) val = "ধ";
-        else if (signValue <= 25.5) val = "ন";
-        else if (signValue <= 26.5) val = "প";
-        else if (signValue <= 27.5) val = "ফ";
-        else if (signValue <= 28.5) val = "ব";
-        else if (signValue <= 29.5) val = "ভ";
-        else if (signValue <= 30.5) val = "ম";
-        else if (signValue <= 31.5) val = "য়";
-        else if (signValue <= 32.5) val = "র";
-        else if (signValue <= 33.5) val = "ল";
-        else if (signValue <= 34.5) val = "স";
-        else if (signValue <= 35.5) val = "হ";
-        else if (signValue <= 36.5) val = "ড়";
-        else if (signValue <= 37.5) val = "ং";
-        else if (signValue <= 38.5) val = "ঃ";
 
+        if (signValue >= 12.2 && signValue <= 12.7) val = "0";
+        else if (signValue >= 1.0 && signValue <= 1.2) val = "1";
+        else if (signValue >= 1.7 && signValue <= 2.0) val = "2";
+
+        //else if (signValue >= 19.0 && signValue <= 21.0) val = "3";
+
+        else if (signValue >= 3.9 && signValue <= 4.1) val = "4";
+        else if (signValue >= 4.6 && signValue <= 4.9) val = "5";
+
+        else if (signValue >= 7.2 && signValue <= 7.7) val = "7";
+
+        else if (signValue >= 7.3 && signValue <= 7.9) val = "9";
+
+        else if (signValue >= 7.9 && signValue <= 8.1) val = "8";
+
+        else if (signValue >= 6.4 && signValue <= 8.4) val = "6";
+
+
+
+        else if (signValue >= 29.3 && signValue <= 29.7) val = "a";
+
+        else if (signValue >= 11.1 && signValue <= 12.0) val = "b";
+
+        else if (signValue >= 9.9 && signValue <= 10.5) val = "c";
+
+        else if (signValue >= 13.9 && signValue <= 14.5) val = "e";
+
+        else if (signValue >= 15.0 && signValue <= 15.7) val = "f";
+
+        else if (signValue >= 16.0 && signValue <= 16.3) val = "g";
+
+        else if (signValue >= 16.9 && signValue <= 17.1) val = "h";
+
+        else if (signValue >= 14.0 && signValue <= 17.0) val = "d";
+
+
+
+
+        else if (signValue >= 19.0 && signValue <= 20.4) val = "i";
+
+        else if (signValue >= 20.0 && signValue <= 21.7) val = "j";
+
+        else if (signValue >= 21.3 && signValue <= 22.1) val = "m";
+
+        else if (signValue >= 1.7 && signValue <= 2.1) val = "k";
+
+        else if (signValue >= 22.0 && signValue <= 24.0) val = "l";
+
+        else if (signValue >= 22.1 && signValue <= 22.4) val = "n";
+        else if (signValue >= 12.2 && signValue <= 12.7) val = "o";
+        else if (signValue >= 24.3 && signValue <= 24.7) val = "p";
+        else if (signValue >= 25.2 && signValue <= 25.5) val = "q";
+        else if (signValue >= 26.0 && signValue <= 26.5) val = "r";
+        else if (signValue >= 27.9 && signValue <= 28.3) val = "s";
+        else if (signValue >= 28.4 && signValue <= 28.7) val = "t";
+        else if (signValue >= 28.9 && signValue <= 29.2) val = "u";
+        else if (signValue >= 29.8 && signValue <= 30.1) val = "v";
+        else if (signValue >= 6.4 && signValue <= 8.4) val = "w";
+        else if (signValue >= 31.4 && signValue <= 31.9) val = "x";
+        else if (signValue >= 33.1 && signValue <= 33.6) val = "y";
+        else if (signValue >= 33.2 && signValue <= 33.8) val = "z";
 
         else val="Can't find symbol";
         return val;

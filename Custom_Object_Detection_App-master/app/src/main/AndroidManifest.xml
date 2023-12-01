@@ -3,16 +3,12 @@
     package="com.example.imagepro">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-
-
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -39,6 +35,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ImagePro"
         android:windowSoftInputMode="adjustResize">
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
         <activity
             android:name=".GoogleAssistantActivity"
             android:exported="false" />
@@ -80,7 +79,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -91,8 +90,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
-
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

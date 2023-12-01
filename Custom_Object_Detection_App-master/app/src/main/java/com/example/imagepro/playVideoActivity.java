@@ -1,6 +1,9 @@
+/*
+
 package com.example.imagepro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.media3.exoplayer.ExoPlayer;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,8 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.exoplayer2.ExoPlayer;
-import com.google.android.exoplayer2.MediaItem;
+
+
+import androidx.media3.common.MediaItem;
 import com.google.android.exoplayer2.PlaybackException;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.ui.StyledPlayerView;
@@ -124,3 +128,5 @@ public class playVideoActivity extends AppCompatActivity {
 
     }
 }
+
+*/

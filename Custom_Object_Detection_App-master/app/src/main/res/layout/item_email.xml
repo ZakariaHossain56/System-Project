@@ -39,6 +39,7 @@
 
         </LinearLayout>
         <TextView
+            android:id="@+id/tvmail"
             android:text="random@gmail.com"
             android:textStyle="bold"
             android:textColor="@color/white"

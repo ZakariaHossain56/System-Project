@@ -20,7 +20,7 @@ import com.example.imagepro.BkashActivity;
 import com.example.imagepro.CameraActivity;
 import com.example.imagepro.MainActivity;
 import com.example.imagepro.R;
-import com.example.imagepro.textToSign;
+//import com.example.imagepro.textToSign;
 import com.google.android.material.button.MaterialButton;
 
 public class PaymentFragment extends Fragment {

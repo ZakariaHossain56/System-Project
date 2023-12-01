@@ -19,7 +19,7 @@ import com.example.imagepro.CameraActivity;
 import com.example.imagepro.GoogleAssistant;
 import com.example.imagepro.MainActivity;
 import com.example.imagepro.R;
-import com.example.imagepro.textToSign;
+//import com.example.imagepro.textToSign;
 
 import org.opencv.android.OpenCVLoader;
 
@@ -61,12 +61,17 @@ public class HomeFragment extends Fragment {
             }
         });
         textToSignButton=view.findViewById(R.id.text_to_sign_button);
+
+        /*
         textToSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), textToSign.class));
             }
         });
+
+        */
+
 
         googleass.setOnClickListener(new View.OnClickListener() {
             @Override

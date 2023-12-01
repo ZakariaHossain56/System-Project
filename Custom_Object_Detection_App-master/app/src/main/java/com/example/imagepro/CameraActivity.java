@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -67,7 +68,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         Log.i(TAG,"Instantiated new "+this.getClass());
     }
 
-    private TextView tvSign;
+    private TextView tvSign, tvsentence;
+    private Button backspace, add, space;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,15 +87,21 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         setContentView(R.layout.activity_camera);
 
         tvSign = findViewById(R.id.tvSign);
+        backspace = findViewById(R.id.backspace);
+        add = findViewById(R.id.add);
+        space = findViewById(R.id.space);
+        tvsentence = findViewById(R.id.tvsentence);
+
+
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);
         mOpenCvCameraView.setCameraIndex(CameraBridgeViewBase.CAMERA_ID_FRONT);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
         try{
 
-            objectDetectorClass=new objectDetectorClass(tvSign,
+            objectDetectorClass=new objectDetectorClass(tvSign,backspace,add,space,tvsentence,
                     getAssets(),"hand_model.tflite","custom_label.txt",300,
-                    "ASL(own).tflite",96
+                    "ASL.tflite",96
             );
             Log.d("MainActivity","Model is successfully loaded");
         }

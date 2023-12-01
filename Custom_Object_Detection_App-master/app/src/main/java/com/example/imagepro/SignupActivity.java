@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignupActivity extends AppCompatActivity {
 
     EditText username , email , password , confirm_password ;
-    String name , mail , pass , confirm_pass;
+
+    TextView gotosignin;
+    String name , mail , pass , confirm_pass, address, phone;
     Button register ;
     FirebaseAuth mAuth ;
     ProgressBar pg ;
@@ -41,6 +44,15 @@ public class SignupActivity extends AppCompatActivity {
         confirm_password = findViewById(R.id.confirm_password);
         register = findViewById(R.id.register);
         pg = findViewById(R.id.progressbar);
+        gotosignin = findViewById(R.id.gotosignin);
+
+        gotosignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SignupActivity.this , LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,16 +64,23 @@ public class SignupActivity extends AppCompatActivity {
                 pass = String.valueOf(password.getText());
                 //confirm_pass = confirm_password.getText().toString();
                 confirm_pass = String.valueOf(confirm_password.getText());
-                if(TextUtils.isEmpty(mail)){
-                    Toast.makeText(SignupActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
+                address = "Not provided";
+                phone = "Not provided";
+
+                if(TextUtils.isEmpty(name)){
+                    Toast.makeText(SignupActivity.this, "Enter your username", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(pass)){
-                    Toast.makeText(SignupActivity.this, "Enter password", Toast.LENGTH_SHORT).show();
+                else if(TextUtils.isEmpty(mail)){
+                    Toast.makeText(SignupActivity.this, "Enter your email", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(confirm_pass)){
-                    Toast.makeText(SignupActivity.this, "Re-enter the password", Toast.LENGTH_SHORT).show();
+                else if (TextUtils.isEmpty(pass)){
+                    Toast.makeText(SignupActivity.this, "Enter your password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                else if (TextUtils.isEmpty(confirm_pass)){
+                    Toast.makeText(SignupActivity.this, "Re-enter your password", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -77,7 +96,7 @@ public class SignupActivity extends AppCompatActivity {
                                     if(user != null)
                                     {
                                         String uid = user.getUid().toString();
-                                        userInfo userinfo = new userInfo(name ,mail);
+                                        userInfo userinfo = new userInfo(name ,mail,address, phone);
                                         DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("userinfo");
                                         dbref.child(uid).setValue(userinfo );
                                         Intent i = new Intent(SignupActivity.this , MainActivity.class);
