@@ -1,15 +1,21 @@
 package com.example.imagepro.ui;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.imagepro.ChangePassword;
@@ -30,6 +36,9 @@ public class SettingsFragment extends Fragment {
     private TextView tvsettingsuser, tvsettingsphone;
     RelativeLayout tvterms, tvprivacy, tvchangepass;
 
+    private SwitchCompat darkmode;
+
+    private LinearLayout llSettings;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_settings_fragment,container,false);
@@ -44,6 +53,21 @@ public class SettingsFragment extends Fragment {
         tvterms = view.findViewById(R.id.tvterms);
         tvprivacy = view.findViewById(R.id.tvprivacy);
         tvchangepass = view.findViewById(R.id.tvchangepass);
+
+        llSettings = view.findViewById(R.id.llSettings);
+        darkmode = view.findViewById(R.id.darkmode);
+
+        darkmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                // Toggle dark mode based on the state of the SwitchCompat
+                if (isChecked) {
+                    setDarkMode();
+                } else {
+                    setLightMode();
+                }
+            }
+        });
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -105,5 +129,42 @@ public class SettingsFragment extends Fragment {
 
 
 
+    }
+
+    private void setDarkMode() {
+        // Change the background and text color to represent dark mode
+        llSettings.setBackgroundColor(getResources().getColor(R.color.primary));
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("dark",true);
+        //editor.putString("password",pass);
+        editor.apply();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        llSettings.setBackgroundResource((R.drawable.splash_background));
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+
+        darkmode.setChecked(sharedPreferences.getBoolean("dark",true) );
+        if(sharedPreferences.getBoolean("dark",true)){
+            llSettings.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            llSettings.setBackgroundResource((R.drawable.splash_background));
+        }
+
+    }
+
+
+    private void setLightMode() {
+        // Change the background and text color to represent light mode
+        llSettings.setBackgroundResource((R.drawable.splash_background));
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean("dark",false);
+        //editor.putString("password",pass);
+        editor.apply();
     }
 }

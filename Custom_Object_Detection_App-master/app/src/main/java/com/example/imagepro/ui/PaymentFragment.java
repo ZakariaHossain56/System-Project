@@ -1,10 +1,14 @@
 package com.example.imagepro.ui;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -31,7 +35,7 @@ public class PaymentFragment extends Fragment {
     EditText getAmount;
     TextView tv;
     double amount;
-
+    ConstraintLayout theme_payment;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -42,21 +46,33 @@ public class PaymentFragment extends Fragment {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("dark",true)){
+            theme_payment.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            theme_payment.setBackgroundResource((R.drawable.splash_background));
+        }
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
     {
         super.onViewCreated(view, savedInstanceState);
-
+        theme_payment = view.findViewById(R.id.theme_payment);
         pay = view.findViewById(R.id.paymentBtn);
         getAmount = view.findViewById(R.id.paymentText);
-        tst = view.findViewById(R.id.tst);
+//        tst = view.findViewById(R.id.tst);
         tv = view.findViewById(R.id.textView);
 
-        tst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getAmount.setText("");
-            }
-        });
+//        tst.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                getAmount.setText("");
+//            }
+//        });
 
       //  tv.setText(txt);
 

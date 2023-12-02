@@ -1,6 +1,9 @@
 package com.example.imagepro.ui;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,7 +38,7 @@ public class HomeFragment extends Fragment {
     private TextView tvwelcome;
     private Button camera_button,textToSignButton;
 
-    LinearLayout googleass;
+    LinearLayout googleass, theme_home;
 
     static {
         if(OpenCVLoader.initDebug()){
@@ -54,9 +57,22 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("dark",true)){
+            theme_home.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            theme_home.setBackgroundResource((R.drawable.splash_background));
+        }
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        theme_home = view.findViewById(R.id.them_home);
         tvwelcome = view.findViewById(R.id.tvwelcome);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();

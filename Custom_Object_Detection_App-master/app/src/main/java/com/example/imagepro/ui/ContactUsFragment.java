@@ -1,6 +1,9 @@
 package com.example.imagepro.ui;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,12 +22,24 @@ import com.example.imagepro.R;
 
 public class ContactUsFragment extends Fragment {
 
-    private LinearLayout facebook, messenger,gmail, whatsapp, x, youtube;
+    private LinearLayout facebook, messenger,gmail, whatsapp, x, youtube, theme_contactus;
 
     private String url;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_contact_us_fragment,container,false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("dark",true)){
+            theme_contactus.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            theme_contactus.setBackgroundResource((R.drawable.splash_background));
+        }
     }
 
     @Override
@@ -37,6 +52,8 @@ public class ContactUsFragment extends Fragment {
         whatsapp = view.findViewById(R.id.whatsapp);
         x = view.findViewById(R.id.x);
         youtube = view.findViewById(R.id.youtube);
+
+        theme_contactus = view.findViewById(R.id.theme_contactus);
 
 
         facebook.setOnClickListener(new View.OnClickListener() {

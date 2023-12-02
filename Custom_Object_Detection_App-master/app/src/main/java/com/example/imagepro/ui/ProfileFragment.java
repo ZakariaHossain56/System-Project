@@ -1,10 +1,14 @@
 package com.example.imagepro.ui;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +32,8 @@ public class ProfileFragment extends Fragment {
     private TextView tvuser, tvaddress, tvphone, tvmail;
 
     private String name, email, address, phone;
+
+    LinearLayout theme_profile;
     TextView editinfo;
     FirebaseAuth mAuth;
 
@@ -38,10 +44,22 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("dark",true)){
+            theme_profile.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            theme_profile.setBackgroundResource((R.drawable.splash_background));
+        }
+    }
+
+    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        theme_profile = view.findViewById(R.id.theme_profile);
 
         tvuser = view.findViewById(R.id.tvuser);
         tvaddress = view.findViewById(R.id.tvaddress);

@@ -36,6 +36,9 @@
         android:theme="@style/Theme.ImagePro"
         android:windowSoftInputMode="adjustResize">
         <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
+        <activity
             android:name=".ChangePassword"
             android:exported="false" />
         <activity

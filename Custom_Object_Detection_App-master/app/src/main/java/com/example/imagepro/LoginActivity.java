@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
     ProgressBar pg ;
     Button login ;
-    TextView goToSignup;
+    TextView goToSignup, forgotpass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,15 @@ public class LoginActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         pg = findViewById(R.id.progressbar);
         login = findViewById(R.id.Login);
+        forgotpass = findViewById(R.id.forgotpass);
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user!=null)
+        {
+            Intent i = new Intent(LoginActivity.this , MainActivity.class);
+            startActivity(i);
+            finish();
+        }
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,6 +73,11 @@ public class LoginActivity extends AppCompatActivity {
                                     FirebaseUser user = mAuth.getCurrentUser();
                                     if(user!=null)
                                     {
+                                        SharedPreferences sharedPreferences = getSharedPreferences("sp",MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("email",mail);
+                                        //editor.putString("password",pass);
+                                        editor.apply();
                                         Intent i = new Intent(LoginActivity.this , MainActivity.class);
                                         startActivity(i);
                                     }
@@ -85,6 +100,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(LoginActivity.this , SignupActivity.class);
                 startActivity(i);
+            }
+        });
+
+        forgotpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
             }
         });
 

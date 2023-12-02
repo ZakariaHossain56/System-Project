@@ -86,12 +86,14 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     DatabaseReference dbref = FirebaseDatabase.getInstance().getReference("usedCount");
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        tvusername = findViewById(R.id.tvusername);
+
+
 
 
 
@@ -106,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navView = findViewById(R.id.nav_view);
+        View view1 = navView.getHeaderView(0);
+        tvusername = view1.findViewById(R.id.tvusername);
         colorChange=downloadUpdates(false);
         showToast("colorchange  "+colorChange);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -147,32 +151,32 @@ public class MainActivity extends AppCompatActivity {
             editor1.apply();
         }
 
-//
-//        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        String userId = currentUser.getUid();
-//        DatabaseReference userInfoRef = FirebaseDatabase.getInstance().getReference("userinfo");
-//        DatabaseReference userRef = userInfoRef.child(userId);
-//
-//
-//        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.exists()) {
-//                    // The user data exists
-//                    String name = dataSnapshot.child("name").getValue(String.class);
-//                    tvusername.setText(name);
-//                } else {
-//                    System.out.println("User not found.");
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                System.out.println("Error: " + error.getMessage());
-//            }
-//        });
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        String userId = currentUser.getUid();
+        DatabaseReference userInfoRef = FirebaseDatabase.getInstance().getReference("userinfo");
+        DatabaseReference userRef = userInfoRef.child(userId);
+
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // The user data exists
+                    String name = dataSnapshot.child("name").getValue(String.class);
+                    tvusername.setText(name);
+                } else {
+                    System.out.println("User not found.");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                System.out.println("Error: " + error.getMessage());
+            }
+        });
 
 
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

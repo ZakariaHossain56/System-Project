@@ -5,6 +5,8 @@
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:background="@color/primary"
+        android:id="@+id/theme_payment"
         tools:context=".ui.PaymentFragment">
 
 
@@ -73,14 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/paymentText"
         app:layout_constraintVertical_bias="0.101" />
 
-    <Button
-        android:id="@+id/tst"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/imgView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

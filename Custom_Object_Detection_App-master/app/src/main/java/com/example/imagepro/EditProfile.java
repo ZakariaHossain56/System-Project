@@ -1,8 +1,10 @@
 package com.example.imagepro;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -20,15 +22,28 @@ public class EditProfile extends AppCompatActivity {
 
     EditText etusername, etemail, etaddress, etphone;
     Button save;
+    ConstraintLayout theme_editprofile;
 
     private String ename, eemail, eaddress, ephone;
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        SharedPreferences sharedPreferences = getSharedPreferences("dm",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("dark",true)){
+            theme_editprofile.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            theme_editprofile.setBackgroundResource((R.drawable.splash_background));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-
+        theme_editprofile = findViewById(R.id.theme_editprofile);
 
         etusername = findViewById(R.id.etusername);
         etemail = findViewById(R.id.etemail);

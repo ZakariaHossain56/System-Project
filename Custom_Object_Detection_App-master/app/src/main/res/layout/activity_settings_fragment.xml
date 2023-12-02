@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/llSettings"
     android:background="@color/primary"
     >
 
@@ -95,6 +96,8 @@
                         android:layout_toEndOf="@id/night_mode_icon"/>
 
                     <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/darkmode"
+                        android:checked="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"

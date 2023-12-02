@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.SurfaceView;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import org.opencv.android.BaseLoaderCallback;
@@ -30,6 +32,7 @@ import java.io.IOException;
 public class CameraActivity extends Activity implements CameraBridgeViewBase.CvCameraViewListener2{
     private static final String TAG="MainActivity";
 
+    FrameLayout theme_cameraview;
     private Mat mRgba;
     private Mat mGray;
     private CameraBridgeViewBase mOpenCvCameraView;
@@ -72,6 +75,19 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
     private Button backspace, add, space;
 
     @Override
+    protected void onPostResume() {
+        super.onPostResume();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("dm",MODE_PRIVATE);
+        if(sharedPreferences.getBoolean("dark",true)){
+            theme_cameraview.setBackgroundColor(getResources().getColor(R.color.primary));
+        }
+        else{
+            theme_cameraview.setBackgroundResource((R.drawable.splash_background));
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -91,6 +107,8 @@ public class CameraActivity extends Activity implements CameraBridgeViewBase.CvC
         add = findViewById(R.id.add);
         space = findViewById(R.id.space);
         tvsentence = findViewById(R.id.tvsentence);
+
+        theme_cameraview = findViewById(R.id.theme_cameraview);
 
 
         mOpenCvCameraView=(CameraBridgeViewBase) findViewById(R.id.frame_Surface);

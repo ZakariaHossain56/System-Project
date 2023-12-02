@@ -81,7 +81,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/email"
         android:importantForAutofill="no"
-        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawableLeft="@drawable/baseline_password_24"
         android:drawablePadding="20dp"/>
 
     <EditText
@@ -90,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="80dp"
-        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawableLeft="@drawable/baseline_password_24"
         android:drawablePadding="20dp"
         android:ems="10"
         android:hint="Confirm Password"
@@ -142,7 +142,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text2"
+        app:layout_constraintTop_toBottomOf="@+id/gotosignin"
         app:layout_constraintVertical_bias="0.26" />
 
 
