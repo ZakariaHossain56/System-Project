@@ -41,7 +41,7 @@
 //                String strName = null;
 //                i.putExtra("txt",txt);
 //                startActivity(i);
-//                /*
+//
 //                String[] tokens1 = txt.split(" ");
 //
 //                //Toast.makeText(textToSign.this, String.valueOf(tokens1.length), Toast.LENGTH_LONG).show();
@@ -76,7 +76,7 @@
 //                    player.setPlayWhenReady(true);
 //                }
 //                dialog.show();
-//                */
+//
 //
 //            }
 //        });

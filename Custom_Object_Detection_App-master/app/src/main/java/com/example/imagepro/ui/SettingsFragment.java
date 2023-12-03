@@ -2,12 +2,14 @@ package com.example.imagepro.ui;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -33,10 +35,13 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SettingsFragment extends Fragment {
 
+    public static int language;
+
     private TextView tvsettingsuser, tvsettingsphone;
     RelativeLayout tvterms, tvprivacy, tvchangepass;
 
     private SwitchCompat darkmode;
+    Button bangla, english;
 
     private LinearLayout llSettings;
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,6 +61,53 @@ public class SettingsFragment extends Fragment {
 
         llSettings = view.findViewById(R.id.llSettings);
         darkmode = view.findViewById(R.id.darkmode);
+
+        bangla = view.findViewById(R.id.bangla);
+        english = view.findViewById(R.id.english);
+
+
+        bangla.setBackgroundColor(getResources().getColor(R.color.primary));
+        bangla.setTextColor(getResources().getColor(R.color.white));
+        english.setBackgroundColor(getResources().getColor(R.color.white));
+        english.setTextColor(getResources().getColor(R.color.black));
+
+        bangla.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+
+                language  = 1;
+
+                bangla.setBackgroundColor(getResources().getColor(R.color.white));
+                bangla.setTextColor(getResources().getColor(R.color.black));
+                english.setBackgroundColor(getResources().getColor(R.color.primary));
+                english.setTextColor(getResources().getColor(R.color.white));
+
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("lan",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("lan",true);
+                //editor.putString("password",pass);
+                editor.apply();
+            }
+        });
+
+        english.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                language = 2;
+                english.setBackgroundColor(getResources().getColor(R.color.white));
+                english.setTextColor(getResources().getColor(R.color.black));
+                bangla.setBackgroundColor(getResources().getColor(R.color.primary));
+                bangla.setTextColor(getResources().getColor(R.color.white));
+
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("lan",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("lan",false);
+                //editor.putString("password",pass);
+                editor.apply();
+            }
+        });
 
         darkmode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -147,7 +199,7 @@ public class SettingsFragment extends Fragment {
         llSettings.setBackgroundResource((R.drawable.splash_background));
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("dm",MODE_PRIVATE);
 
-        darkmode.setChecked(sharedPreferences.getBoolean("dark",true) );
+        darkmode.setChecked(sharedPreferences.getBoolean("dark",true));
         if(sharedPreferences.getBoolean("dark",true)){
             llSettings.setBackgroundColor(getResources().getColor(R.color.primary));
         }
@@ -155,6 +207,21 @@ public class SettingsFragment extends Fragment {
             llSettings.setBackgroundResource((R.drawable.splash_background));
         }
 
+        SharedPreferences sharedPreferences2 = getActivity().getSharedPreferences("lan",MODE_PRIVATE);
+        if(sharedPreferences2.getBoolean("lan",true)){
+            language = 1;
+            bangla.setBackgroundColor(getResources().getColor(R.color.white));
+            bangla.setTextColor(getResources().getColor(R.color.black));
+            english.setBackgroundColor(getResources().getColor(R.color.primary));
+            english.setTextColor(getResources().getColor(R.color.white));
+        }
+        else{
+            language = 2;
+            english.setBackgroundColor(getResources().getColor(R.color.white));
+            english.setTextColor(getResources().getColor(R.color.black));
+            bangla.setBackgroundColor(getResources().getColor(R.color.primary));
+            bangla.setTextColor(getResources().getColor(R.color.white));
+        }
     }
 
 

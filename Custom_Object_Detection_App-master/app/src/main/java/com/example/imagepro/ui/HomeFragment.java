@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment {
 
         camera_button=view.findViewById(R.id.camera_button);
 
-        googleass = view.findViewById(R.id.googleass);
+        //googleass = view.findViewById(R.id.googleass);
         camera_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,23 +113,23 @@ public class HomeFragment extends Fragment {
         });
         textToSignButton=view.findViewById(R.id.text_to_sign_button);
 
-        /*
-        textToSignButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), textToSign.class));
-            }
-        });
 
-        */
+//        textToSignButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getActivity(), textToSign.class));
+//            }
+//        });
 
 
-        googleass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), GoogleAssistant.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
-            }
-        });
+
+
+//        googleass.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getActivity(), GoogleAssistant.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP));
+//            }
+//        });
 
     }
 

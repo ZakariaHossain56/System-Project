@@ -35,9 +35,9 @@
     <LinearLayout
 
         android:layout_width="350dp"
-        android:layout_height="180dp"
+        android:layout_height="240dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/rounded_rectangle"
         android:orientation="vertical"
         >
@@ -47,7 +47,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/real_time_96" />
 
 
@@ -55,16 +55,15 @@
             android:id="@+id/camera_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
             android:padding="15dp"
-            android:layout_gravity="center"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
             android:text="Real-Time Sign Language Recognition"
-            android:layout_marginTop="6dp"
-            android:textAllCaps="false" />
-
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22dp"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -73,7 +72,7 @@
 
     <LinearLayout
         android:layout_width="350dp"
-        android:layout_height="180dp"
+        android:layout_height="240dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rounded_rectangle"
@@ -85,7 +84,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:src="@drawable/text_to_sign_96" />
 
 
@@ -100,49 +99,49 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:text="Text to Sign Language Convertion"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="10dp"
             android:textAllCaps="false" />
 
 
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/googleass"
-        android:layout_width="350dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_rectangle"
-        android:orientation="vertical"
-        >
+<!--    <LinearLayout-->
+<!--        android:id="@+id/googleass"-->
+<!--        android:layout_width="350dp"-->
+<!--        android:layout_height="180dp"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:background="@drawable/rounded_rectangle"-->
+<!--        android:orientation="vertical"-->
+<!--        >-->
 
-        <ImageView
-            android:id="@+id/command"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/google_assistant_96" />
-
-
-        <TextView
-            android:id="@+id/command_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:padding="15dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:text="Command Using Google Assistant"
-            android:layout_marginTop="6dp"
-            android:textColor="@color/white"
-            android:textAllCaps="false" />
+<!--        <ImageView-->
+<!--            android:id="@+id/command"-->
+<!--            android:layout_width="70dp"-->
+<!--            android:layout_height="70dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:src="@drawable/google_assistant_96" />-->
 
 
+<!--        <TextView-->
+<!--            android:id="@+id/command_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:padding="15dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="22dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:text="Command Using Google Assistant"-->
+<!--            android:layout_marginTop="6dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textAllCaps="false" />-->
 
-    </LinearLayout>
+
+
+<!--    </LinearLayout>-->
 
 
 
