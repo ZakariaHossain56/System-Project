@@ -97,23 +97,30 @@ An app for assisting mute person featuring sign language recognition.
   </tr>
 
   
+  <table width="100%">
   <tr>
-  <td>
-      <img src="https://raw.githubusercontent.com/ZakariaHossain56/System-Project/main/snapshots/admin_panel.jpg" alt="Admin Panel" width="350">
-      <div align="center"><i>Admin Panel</i></div>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/ZakariaHossain56/System-Project/main/snapshots/admin_panel.jpg" alt="Admin Panel" width:100%; height:auto;">
+      <div><i>Admin Panel</i></div>
     </td>
   </tr>
+</table>
 
+
+  <table width="100%">
   <tr>
-  <td>
-      <img src="https://raw.githubusercontent.com/ZakariaHossain56/System-Project/main/snapshots/all_signs.jpg" alt="All signs" width="350">
+    <td>
+      <img src="https://raw.githubusercontent.com/ZakariaHossain56/System-Project/main/snapshots/all_signs.jpg" 
+           alt="All signs" width="100%" height="auto">
       <div align="center"><i>All signs</i></div>
     </td>
   </tr>
+</table>
+
 
   <tr>
   <td>
-      <img src="https://raw.githubusercontent.com/ZakariaHossain56/System-Project/main/snapshots/add_category.jpg" alt="Add category" width="350">
+      <img src="https://raw.githubusercontent.com/ZakariaHossain56/System-Project/main/snapshots/add_category.jpg" alt="Add category" width="100%" height="auto">
       <div align="center"><i>Add category</i></div>
     </td>
   </tr>
